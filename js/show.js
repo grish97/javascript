@@ -1,9 +1,9 @@
 let show = {
-    users : JSON.parse(localStorage.getItem('users')),
-    posts : JSON.parse(localStorage.getItem('posts')),
+    users    : JSON.parse(localStorage.getItem('users')),
+    posts    : JSON.parse(localStorage.getItem('posts')),
     comments : JSON.parse(localStorage.getItem('comments')),
-    userId  : (document.cookie.split(';')[0]).split('=')[1],
-    postId : (document.cookie.split(';')[1]).split('=')[1],
+    userId   : (document.cookie.split(';')[0]).split('=')[1],
+    postId   : (document.cookie.split(';')[1]).split('=')[1],
 
     viewPost : function() {
         if (this.posts) {
@@ -45,7 +45,6 @@ let show = {
                     	</div>`;
                     	$('.commentBlock').append(showCommentElem);
 					// IF THERE IS REPLY
-					// console.log(index+"index");
 					if(!(comment.reply.length === 0)) {
 						$.each(comment.reply, (key,value) => {
 							let showCommentReplElem = `<p class="">
@@ -62,13 +61,12 @@ let show = {
         }
     },
 
-    newComment  : function(event)  {
+    newComment  : function(input)  {
         let date = new Date();
         let time = ((date.getHours() < 10 ? '0' : '') + date.getHours()) + ':' +
 			(((date.getMinutes) < 10 ? '0' : '') + date.getMinutes()) + ':' +
 			((date.getSeconds() < 10 ? '0' : '') + date.getSeconds());
-        let input = $(event.target);
-        let commentBlockId = +$(event.target).closest('.item').attr(`data-comment`);
+        let commentBlockId = +input.closest('.item').attr(`data-comment`);
         let replyInputVal = '';
         let commentInputVal = '';
 
@@ -137,17 +135,22 @@ let show = {
             input.val('');
         }
     },
+
+    deleteCookie   :  () => {
+        document.cookie = "postId='"+ show.postId  +"'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    },
 };
 
 show.viewPost();
 
-$(`.send`).click((event) => {
-    show.newComment(event);
+$(`.send`).on(`click`, (event) => {
+    let input =  $(event.target).closest(`.commentInput`).find(`._comment`);
+    show.newComment(input);
 });
 
 $(document).on('keyup', '._comment', function(event) {
     if(event.which === 13) {
-        show.newComment(event)
+        show.newComment($(event.target));
     }
 });
 
@@ -159,3 +162,30 @@ $(document).on('click', '.reply', function() {
     $(this).removeClass('reply');
 });
 
+$('.edit').on('click',function(event) {
+    let postId = +$(event.target).closest('.item').attr('data-attribute');
+    window.location.href = 'edit.html';
+});
+
+$(`.delete`).click((event) =>  {
+    let target = $(event.target);
+    let card = target.closest('.item');
+    $(show.posts).each(function(key,post) {
+        if(this.postId === show.postId) {
+            show.posts.splice(key,1);
+            localStorage.setItem('posts', JSON.stringify(show.posts));
+            card.remove();
+        }
+        $.each(show.comments,(index, comment) => {
+            if (post.postId === comment.postId) {
+                console.log(this);
+                show.comments.splice(index,1);
+                localStorage.setItem('comments', JSON.stringify(show.comments));
+            }
+        });
+    });
+
+    window.location.href = document.referrer;
+});
+
+// CHANGE LOCATION DELETE COOKIE

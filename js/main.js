@@ -1,14 +1,15 @@
 let userObject = {
+    users : JSON.parse(localStorage.getItem('users')),
+    userId  : (document.cookie.split(';')[0]).split('=')[1],
+
     getUser : function () {
-        let pattern = /[0-9]+/g;
-        let id = document.cookie.match(pattern);
-        if(id) {
-            let user = JSON.parse(localStorage.getItem('users'))[id];
-            this.profile(user,id)
+        if(this.userId) {
+            let user = this.users[this.userId];
+            this.profile(user)
         }
     },
 
-    profile : function (data,id) {
+    profile : function (data) {
         if(data) {
             $('.nav-item').addClass('d-none');
             $('.dropdown').addClass('d-inline');
@@ -16,11 +17,10 @@ let userObject = {
             $('#content').removeClass('d-none');
             $('.user_name').text(data['name']);
             $('.logout').click(function () {
-                document.cookie = "id='"+ id +"'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "id='"+ userObject.userId +"'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 window.location.href = 'login.html';
             });
         }
     }
 };
-
 userObject.getUser();

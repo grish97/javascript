@@ -4,7 +4,7 @@ let allPost =  {
         let id = document.cookie.split('=')[1];
         let posts = JSON.parse(localStorage.getItem('posts'));
         let user = JSON.parse(localStorage.getItem('users'));
-        if(!posts || posts.lenght === 0) $('.card-group').html("<h1 class='card-text text-danger'>No Post</h1>");
+        if(!posts || posts.lenght === 0)  $('.card-group').append('<p class="card-text text-danger">No Post</p>');
 
         $(posts).each(function() {
             let divCard = '<div class="item mr-lg-4 mb-lg-4" data-id="'+ this.postId +'">' +
@@ -48,12 +48,19 @@ $('.delete').on('click',function(e){
     let postId = $(e.target).closest('.item').attr('data-id');
     let card = $(e.target).closest('.item');
     let posts = JSON.parse(localStorage.getItem('posts'));
-    $(posts).each(function(key) {
+    $.each(posts,function(key) {
         if(this.postId === postId){
             posts.splice(key,1);
             localStorage.setItem('posts',JSON.stringify(posts));
             return false;
         }
+        $.each(allPost.comments,(index, comment) => {
+            if (comment.postId === comment.postId) {
+                console.log(this);
+                show.comments.splice(index,1);
+                localStorage.setItem('comments', JSON.stringify(show.comments));
+            }
+        });
     });
     card.remove();
 });

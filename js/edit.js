@@ -1,28 +1,29 @@
 let editPost = {
+    users   : JSON.parse(localStorage.getItem('users')),
+    posts   : JSON.parse(localStorage.getItem('posts')),
+    userId  : (document.cookie.split(';')[0]).split('=')[1],
+    postId : (document.cookie.split(';')[1]).split('=')[1],
+
 
     getPost : function() {
-        let cookie = document.cookie.split(';');
-        let userId = cookie[0].split('=')[1];
-        let postId = cookie[1].split('=')[1];
-        let posts = JSON.parse(localStorage.getItem('posts'));
-        $(posts).each(function() {
-            if(this.owner_id === userId && this.postId === postId) {
-                editPost.inputVal(this,posts,postId,userId);
+        $.each(this.posts,function() {
+            if(this.owner_id === editPost.userId && this.postId === editPost.postId) {
+                editPost.inputVal(this);
             }
         });
     },
 
-    inputVal  : function (data,posts,postId,userId) {
+    inputVal  : function (data) {
         let fields    = $('input');
         fields.eq(0).attr('value',data.category);
         fields.eq(1).attr('value',data.title);
         $('textarea').text(data.desk);
         $('.access').click(function() {
-            editPost.update(posts,postId,userId);
+            editPost.update();
         });
     },
 
-    update : function(posts,postId,userId) {
+    update : function() {
         let date = new Date();
         let fields    = $('input');
         let category  = fields.eq(0).val();
@@ -41,32 +42,31 @@ let editPost = {
         }*/
         //TEST END
 
-        $(posts).each(function(key) {
-            if(this.postId === postId) {
-                posts.splice(key,1,{
-                    postId   : postId,
+        $(this.posts).each(function(key) {
+            if(this.postId === editPost.postId) {
+                editPost.posts.splice(key,1,{
+                    postId   : editPost.postId,
                     category : category,
                     title    : title,
                     desk     : desc,
                     imgPath  : 'images/300x200.png',
-                    owner_id : userId,
+                    owner_id : editPost.userId,
                     updated_at : (date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear())
                 });
-                localStorage.setItem('posts', JSON.stringify(posts));
+                localStorage.setItem('posts', JSON.stringify(editPost.posts));
                 return true;
             }
         });
 
-        this.deleteCookie(postId);
-        window.location.href = 'myPost.html';
+        this.deleteCookie();
+        window.location.href = `myPost.html`;
     },
 
-    deleteCookie   : function (postId) {
-        document.cookie = "postId='"+ postId  +"'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    deleteCookie   : function () {
+        document.cookie = "postId='"+ editPost.postId  +"'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     },
 
 };
 
 editPost.getPost();
-
 

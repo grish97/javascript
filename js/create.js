@@ -77,3 +77,7 @@ function getLocalStorage(data) {
 $('#submitButton').click(function () {
    if(registerValidation()) createUser();
 });
+
+$('input').keyup((event) => {
+   if(event.which === 13 && registerValidation()) createUser();
+});
