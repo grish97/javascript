@@ -1,0 +1,96 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    overflow-x:hidden;
+}
+
+header {
+    background:#343a40;
+}
+
+img {
+    object-fit: cover;
+}
+
+.commentReplyBlock {
+    padding-left: 50px;
+    color:darkslategrey;
+    font-size:14px
+}
+
+. {
+    border:1px solid greenyellow;
+}
+/*CARD*/
+.card {
+    background:none;
+    border:none;
+}
+
+.show {
+    cursor:pointer;
+    transition:0.6s ease;
+}
+
+.show:hover {
+    color:#007bff;
+}
+
+.reply {
+    cursor:pointer;
+    transition:0.6s ease;
+    opacity:0.8;
+
+}
+
+.reply:hover {
+    opacity:1;
+}
+/*CARD END*/
+#content {
+    position:relative;
+    background:url('../images/service_4.jpg') center fixed;
+    background-size:cover;
+    padding-top:80px;
+    color:#fff;
+    height:100vh;
+}
+
+#content:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+#content h5 {
+    position:relative;
+}
+
+#content h5:after {
+    position:absolute;
+    border-bottom:1px solid #343a40;
+    padding-top:10px;
+}
+
+/*COMMENT BLOCK*/
+
+
+
+.wrong {
+    background: antiquewhite;
+    padding: 9px;
+}
+
+#footer {
+    vertical-align: baseline;
+    background-color:#343a40;
+    padding:5px;
+}

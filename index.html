@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <title>Traning</title>
+    </head>
+    <body>
+        <!--HEADER-->
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+                    <a href="/" class="navbar-brand">Project</a>
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item dropdown d-none">
+                            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Posts</a>
+                            <div class="dropdown-menu">
+                                <a href="myPost.html" class="dropdown-item my_post">My Posts</a>
+                                <a href="createPost.html" class="dropdown-item create_post">Create Posts</a>
+                                <a href="allPosts.html" class="dropdown-item all_post">All Posts</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown d-none mr-3">
+                            <a class="nav-link dropdown-toggle user_name" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item logout" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!--Guest-->
+        <div class="mt-5" id="guest">
+            <div class="container">
+                    <div class="card-group">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center mb-5">Welcome To Our Site</h5>
+                                <p class="card-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <!--AUTH USER-->
+        <div class="d-none" id="content">
+            <div class="container">
+                <div class="card-group">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mb-5">Welcome To Your Page <span class="user_name font-weight"></span></h5>
+                            <p class="card-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--FOOTER-->
+        <footer id="footer">
+            <p class="text-center text-white"><small>©2019 All Rights Reserved</small></p>
+        </footer>
+    <!--SCRIPT START-->
+        <script src="js/access/jquery.min.js"></script>
+        <script src="js/access/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

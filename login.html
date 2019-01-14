@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/controlUser.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+                <a href="/" class="navbar-brand">Project</a>
+
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--NAVBAR-->
+    <p class="text-danger text-center d-none wrong">Wrong email and password</p>
+    <div class="container">
+        <div class="col-lg-6 mx-auto mt-5">
+            <!--<img src="images/login.png" alt="Login">-->
+            <h2 class="text-center"><big>Sign</big> In</h2>
+            <form action="#" class="mt-5">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" data-validate="required|min:5|max:30|email" name="email">
+                    <span class="error-msg small text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" data-validate="required|min:3|max:30" name="password">
+                    <span class="error-msg small text-danger"></span>
+                </div>
+
+                <button type="button" class="btn btn-success">SignIn</button>
+            </form>
+        </div>
+    </div>
+<!--SCRIPT START-->
+<script src="js/access/jquery.min.js"></script>
+<script type="text/javascript" src="js/access/bootstrap.min.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/confirmAccess.js"></script>
+<script src="js/main.js"></script>
+<!--SCRIPT END-->
+</body>
+</html>

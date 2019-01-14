@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/controlNoUser.js"></script>
+    <title>Create</title>
+</head>
+<body>
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+                <a href="/" class="navbar-brand">Project</a>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button">Posts</a>
+                        <div class="dropdown-menu">
+                            <a href="myPost.html" class="dropdown-item">My Posts</a>
+                            <a href="allPosts.html" class="dropdown-item">All Posts</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--NAVBAR-->
+    <div class="container">
+        <div class="col-lg-6 mx-auto mt-5">
+            <h2 class="text-center"><big>Create</big> Your Post</h2>
+            <form class="mt-5" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Category</label>
+                    <input type="text" class="form-control" id="name" data-validate="required|min:5|max:30" name="name">
+                    <span class="error-msg small text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" data-validate="required|min:3|max:30" name="title">
+                    <span class="error-msg small text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" data-validate="required|min:3|max:1000" name="description"></textarea>
+                    <span class="error-msg small text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="thumb">Thumbnail</label>
+                    <input type="file" class="form-control" id="thumb" data-validate="" name="thumb" accept="image/*">
+                    <span class="error-msg small text-danger"></span>
+                </div>
+
+                <button type="button" class="btn btn-success access">Create</button>
+            </form>
+        </div>
+    </div>
+<!--SCRIPT START-->
+<script src="js/access/jquery.min.js"></script>
+<script type="text/javascript" src="js/access/bootstrap.min.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/createPost.js"></script>
+<!--SCRIPT END-->
+</body>
+</html>
