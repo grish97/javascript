@@ -48,17 +48,16 @@ $('.delete').on('click',function(e){
     let postId = $(e.target).closest('.item').attr('data-id');
     let card = $(e.target).closest('.item');
     let posts = JSON.parse(localStorage.getItem('posts'));
-    $.each(posts,function(key) {
-        if(this.postId === postId){
+    $.each(posts,function(key,post) {
+        if(post.postId === postId){
             posts.splice(key,1);
             localStorage.setItem('posts',JSON.stringify(posts));
             return false;
         }
         $.each(allPost.comments,(index, comment) => {
-            if (comment.postId === comment.postId) {
-                console.log(this);
-                show.comments.splice(index,1);
-                localStorage.setItem('comments', JSON.stringify(show.comments));
+            if (comment.postId === post.postId) {
+                allPost.comments.splice(index,1);
+                localStorage.setItem('comments', JSON.stringify(allPost.comments));
             }
         });
     });

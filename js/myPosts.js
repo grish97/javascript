@@ -62,6 +62,7 @@ let object = {
                 }
             });
         });
+        card.remove();
 
     }
 };
