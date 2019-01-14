@@ -40,7 +40,7 @@ let show = {
 									<span>${comment.content}</span>
 								</p>
 							</div>
-                        	<a class="reply col-1"><i class="fas fa-reply"></i></a>
+                        	<a class="reply col-1 reply_show"><i class="fas fa-reply"></i></a>
                         	<div class="commentReplyBlock  mb-4 pt-4 d-flex flex-column col-6"></div>
                     	</div>`;
                     	$('.commentBlock').append(showCommentElem);
@@ -87,7 +87,7 @@ let show = {
                         '            <span>'+ commentInputVal +'</span>\n' +
                         '        </p>\n' +
                         '</div>\n' +
-                        '<a class="reply col-1"><i class="fas fa-reply"></i></a>'+
+                        '<a class="reply col-1 reply_show"><i class="fas fa-reply"></i></a>'+
                         '<div class="commentReplyBlock  mb-4 pt-4 d-flex flex-column col-6">'+
                      '</div>';
                 $('.commentBlock').append(showCommentElem);
@@ -107,6 +107,7 @@ let show = {
             // REPLY INPUT COND
             else {
                 replyInputVal = input.val();
+                input.closest(`.item`).find(`.reply_show`).addClass('reply');
                 let showCommentReplElem =
 					`<p class="">
 						<span class="small text-muted">${time}</span>
@@ -134,21 +135,19 @@ let show = {
                 input.remove()
             }
             input.val('');
-        }else {
-            input.remove();
         }
-
     },
 };
 
 show.viewPost();
 
+$(`.send`).click((event) => {
+    show.newComment(event);
+});
+
 $(document).on('keyup', '._comment', function(event) {
-    let target = $(event.taget);
     if(event.which === 13) {
-        show.newComment(event);
-        // reply hide and show
-        if(target.attr('id') === 'reply') target.closest(`.item`).find(`.reply_hide`).addClass('reply');
+        show.newComment(event)
     }
 });
 
@@ -159,3 +158,4 @@ $(document).on('click', '.reply', function() {
     searchBlock.find(`#reply`).trigger('select');
     $(this).removeClass('reply');
 });
+
