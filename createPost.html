@@ -54,12 +54,29 @@
 
                 <div class="form-group">
                     <label for="thumb">Thumbnail</label>
-                    <input type="file" class="form-control" id="thumb" data-validate="" name="thumb" accept="image/*">
+                    <input type="file" class="form-control" id="thumb" data-validate="" name="thumb" accept="image/*" multiple>
                     <span class="error-msg small text-danger"></span>
                 </div>
 
                 <button type="button" class="btn btn-success access">Create</button>
             </form>
+        </div>
+
+        <div class="modal fade" id="access" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class=" modal-title">Delete</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class=" modal-title">You want to delete the picture?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger conf_yes">Yes</button>
+                        <button class="btn btn-danger conf_no">No</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <!--SCRIPT START-->

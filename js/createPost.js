@@ -61,9 +61,41 @@ let createPost  = {
         window.location.href = 'myPost.html';
     },
 
+    showImage : (img,input) => {
+        let imgElem = `<img src="${img}" class="mt-3 mr-2 _image" alt="Photo" width="100px" height="100px">`;
+        $(input).after(imgElem);
+    },
+
 };
 
 $('.access').click(function() {
     createPost.inputVal();
 });
 
+$(`#thumb`).on(`change`, (e) => {
+    // let zip = new JSZip();
+    // let img = zip.folder(`images`);
+    let input = event.target;
+    let reader = new FileReader();
+
+    reader.onload = () => {
+        // img.file('horst.png',reader.result,{base64:true});
+        createPost.showImage(reader.result,input);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+});
+
+$(document).on('dblclick', (event) => {
+    let modalWin = $(`#access`);
+    let input = $(event.target);
+    modalWin.modal('show');
+    $(`.conf_no`).click(() => {
+        modalWin.modal(`hide`);
+    });
+
+    $(`.conf_yes`).click(() => {
+        modalWin.modal(`hide`);
+        input.remove();
+    });
+});
