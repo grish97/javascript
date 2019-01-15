@@ -82,6 +82,18 @@ img {
 
 /*COMMENT BLOCK*/
 
+/*CREATE  IMAGE*/
+._image {
+    position:relative;
+}
+
+._image i {
+    position:absolute;
+    left:80px;
+    top:20px;
+    color:red;
+    cursor:pointer;
+}
 
 
 .wrong {

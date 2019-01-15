@@ -1,70 +1,59 @@
 let createPost  = {
-    inputVal : function () {
+    users  : JSON.parse(localStorage.getItem(`users`)),
+    posts  : JSON.parse(localStorage.getItem(`posts`)),
+    userId  : (document.cookie.split(';')[0]).split('=')[1],
+
+    inputVal : function (imgName) {
         let fields    = $('input');
         let category  = fields.eq(0).val();
         let title     = fields.eq(1).val();
         let desc      = $('textarea').val();
-        let imgElem   = fields.eq(2);
-        let imgPath;
-        if(imgElem.val()) {
-            let reader = new FileReader();
-            reader.readAsDataURL(imgElem[0].files[0]);
-            reader.onload = function() {
-                imgPath = reader.result;
-                createPost.pushData(category,title,desc,imgPath);
-            };
-        }else {
-            imgPath = 'images/300x200.png';
-            createPost.pushData(category,title,desc,imgPath,imgElem);
-        }
+        imgName       = imgName.split('.')[0];
+        createPost.pushData(category,title,desc,imgName);
     },
 
-    pushData : function (category,title,desc,imgPath,imgElem) {
-        let patt = /[0-9]+/g;
-        let id = document.cookie;
-        let userId = id.match(patt)[0];
-        let userName = JSON.parse(localStorage.getItem('users'))[userId]['name'];
-        let posts = JSON.parse(localStorage.getItem(`posts`));
+    pushData : function (category,title,desc,imgName) {
+        if(!this.posts) this.posts = [];
 
-        //TEST
-        // let images = JSON.parse(localStorage.getItem('images'));
-        // if(!images) {
-        //     images = [];
-        // }
-        //
-        // let reader = new FileReader();
-        // reader.onload = function () {
-        //     console.log(reader.result)
-        //     images.push({
-        //         id  : String(images.length),
-        //         imagePath : reader.result,
-        //     });
-        // };
-        // console.log(imgElem[0].files);
-        // // reader.readAsDataURL(imgElem[0].files[0]);
-        // localStorage.setItem('images',JSON.stringify(images));
-        //TEST END*/
-        if(!posts) {
-            posts = [];
-        }
-
-        posts.push({
-         postId   : String(posts.length),
+        this.posts.push({
+         postId   : String(createPost.posts.length),
          category : category,
          title    : title,
          desk     : desc,
-         imgPath  : imgPath,
-         owner_id : userId,
+         imgName  : imgName,
+         owner_id : createPost.userId,
         });
 
-        localStorage.setItem(('posts'), JSON.stringify(posts));
-        window.location.href = 'myPost.html';
+        localStorage.setItem('posts', JSON.stringify(this.posts));
+        // window.location.href = document.referrer;
     },
 
     showImage : (img,input) => {
-        let imgElem = `<img src="${img}" class="mt-3 mr-2 _image" alt="Photo" width="100px" height="100px">`;
+        let imgElem = `<div class="_image d-inline-block">
+                            <img src="${img}" class="mt-3 mr-2" alt="Photo" width="100px" height="100px"> 
+                            <i class="far fa-trash-alt deleteImg"></i>  
+                        </div>`;
         $(input).after(imgElem);
     },
+
+    saveImages : (data,name) => {
+        $.ajax({
+            url: '../imageWorker.php',
+            method: 'post',
+            data: {
+                name   : name,
+                imgSrc : data
+            },
+            success: function(data){
+                data  = JSON.parse(data);
+                createPost.inputVal(data.name)
+
+            },
+            error: function(err){
+                console.error(err)
+            }
+    });
+    }
 
 };
 
@@ -72,23 +61,10 @@ $('.access').click(function() {
     createPost.inputVal();
 });
 
-$(`#thumb`).on(`change`, (e) => {
-    // let zip = new JSZip();
-    // let img = zip.folder(`images`);
-    let input = event.target;
-    let reader = new FileReader();
-
-    reader.onload = () => {
-        // img.file('horst.png',reader.result,{base64:true});
-        createPost.showImage(reader.result,input);
-    };
-
-    reader.readAsDataURL(input.files[0]);
-});
-
-$(document).on('dblclick', (event) => {
+$(document).on('click', '.deleteImg', (event) => {
     let modalWin = $(`#access`);
     let input = $(event.target);
+    let imgBlock = $(`._image`);
     modalWin.modal('show');
     $(`.conf_no`).click(() => {
         modalWin.modal(`hide`);
@@ -96,6 +72,21 @@ $(document).on('dblclick', (event) => {
 
     $(`.conf_yes`).click(() => {
         modalWin.modal(`hide`);
-        input.remove();
+        imgBlock.remove();
+        if(!imgBlock[0]) {
+            $(`input[type='file']`).val('');
+        }
     });
+});
+
+$(`#thumb`).on(`change`, (event) => {
+    let input = event.target;
+    let fileName = input.files[0].name;
+    let reader = new FileReader();
+    reader.onload = () => {
+        createPost.showImage(reader.result,input);
+        createPost.saveImages(reader.result,fileName);
+    };
+
+    reader.readAsDataURL(input.files[0]);
 });
