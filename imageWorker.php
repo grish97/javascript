@@ -3,7 +3,7 @@
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     saveData();
 }else if($_SERVER['REQUEST_METHOD'] === 'GET') {
-    getData();
+    getData($_GET('id'));
 }
 
 
@@ -13,17 +13,27 @@ function saveData () {
     if(is_null($file_data)) {
         $file_data = [];
     }
-    $key = count($file_data);
-    $file_data[$key]  =  [
-        'name' => $_POST['name'],
-        'imgSrc' => $_POST['imgSrc']
+    $key = count($file_data) + 1;
+
+    $file_data["$key"] = [
+        'postId'    => $_POST['postId'],
+        'owner_id'  => $_POST['owner_id'],
+        'imgBase64' => $_POST['images']
     ];
-    file_put_contents('images.json',json_encode($file_data));
-    echo json_encode($file_data[$key]);
+
+    file_put_contents('images.json',json_encode($file_data,true));
+    echo($key);
 }
 
-function getData() {
-    var_dump($_GET);
+function getData($id) {
+
+    $file = file_get_contents('images.json');
+
+    $file_data = json_decode($file);
+
+    echo $file_data[$id];
+
 }
+
 
 
