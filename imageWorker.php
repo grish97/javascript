@@ -15,23 +15,23 @@ function saveData () {
     }
     $key = count($file_data) + 1;
 
-    $file_data["$key"] = [
+    $file_data[$key] = [
         'postId'    => $_POST['postId'],
         'owner_id'  => $_POST['owner_id'],
-        'imgBase64' => $_POST['images']
+        'images'    => $_POST['images']
     ];
 
-    file_put_contents('images.json',json_encode($file_data,true));
-    echo($key);
+    file_put_contents('images.json',json_encode($file_data));
+    echo json_encode($file_data);
+
 }
 
 function getData($id) {
-
-    $file = file_get_contents('images.json');
-
-    $file_data = json_decode($file);
-
-    echo $file_data[$id];
+var_dump('jkgh,jbgjkbjkb');
+//    $file = file_get_contents('images.json');
+//    echo $file;
+//    $file_data = json_decode($file, true);
+//    echo json_encode($file_data[$id]);
 
 }
 

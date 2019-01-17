@@ -13,7 +13,7 @@ $(document).ready(function () {
                 data: {id: id},
                 success : (data) => {
                     // object.userPost(data);
-                    console.log(data)
+                    console.log(data);
                 },
                 error : (err) => {
                     console.log(err);
@@ -88,7 +88,9 @@ $(document).ready(function () {
         }
     };
 
-    object.getImage();
-
-
+    $.each(object.posts, (key,value) => {
+       if(object.userId === value.owner_id) {
+           object.getImage(value.imgId);
+       }
+    });
 });

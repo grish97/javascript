@@ -5,6 +5,7 @@ $(document).ready(function() {
         userId    : (document.cookie.split(';')[0]).split('=')[1],
         fileArray : [],
         imagesArray: [],
+        filesLoad  : 0,
 
         readFile : (fileList) => {
             if(fileList.length !== 0) {
@@ -16,18 +17,37 @@ $(document).ready(function() {
             }
         },
 
-        inputVal : () => {
+        saveImageData : () => {
+            let postId = createPost.posts ? createPost.posts.length : '0';
+            let images = createPost.imagesArray ? createPost.imagesArray : null;
+            $.ajax({
+                url: '../imageWorker.php',
+                method: 'post',
+                data: {
+                    postId        : postId,
+                    owner_id      : createPost.userId,
+                    images        : images
+                },
+                success: function(id){
+                    console.log(JSON.parse(id)['1']);
+                    // createPost.inputVal(id);
+                },
+                error: function(err){
+                    console.error(err)
+                }
+            });
+
+        },
+
+        inputVal : (imgId) => {
             let fields    = $('input');
             let category  = fields.eq(0).val();
             let title     = fields.eq(1).val();
             let desc      = $('textarea').val();
-
-            if(category && title && desc) {
-                createPost.pushData(category,title,desc);
-            }
+            createPost.pushData(category,title,desc,imgId);
         },
 
-        pushData : (category,title,desc) => {
+        pushData : (category,title,desc,imgId) => {
             let date = new Date();
             let time = ((date.getHours() < 10 ? '0' : '') + date.getHours()) + ':' +
                 (((date.getMinutes) < 10 ? '0' : '') + date.getMinutes()) + ':' +
@@ -39,6 +59,7 @@ $(document).ready(function() {
              category   : category,
              title      : title,
              desk       : desc,
+             imgId      : imgId,
              owner_id   : createPost.userId,
              created_at : time,
             });
@@ -55,53 +76,21 @@ $(document).ready(function() {
                             <i class="far fa-trash-alt deleteImg"></i>  
                         </div>`;
                 $(input).after(imgElem);
+                createPost.imagesArray.push(reader.result);
             };
             reader.readAsDataURL(imgData);
         },
 
-        readImage : function()  {
-            $.each(createPost.fileArray, (key,value) => {
-                let reader = new FileReader();
-                reader.onload = () => {
-                    createPost.imagesArray.push(reader.result)
-                };
-                reader.readAsDataURL(value);
-            });
-            this.saveImageData()
-        },
-
-        saveImageData : (name) => {
-            $.ajax({
-                url: '../imageWorker.php',
-                method: 'post',
-                data: {
-                    postId        : (createPost.posts.length),
-                    owner_id      :  createPost.userId,
-                    images     : this.imagesArray ? this.imagesArray : null
-                },
-                success: function(data){
-                    console.log(data)
-                },
-                error: function(err){
-                    console.error(err)
-                }
-            });
-
-        }
-
-
     };
 
     $('.access').on('click', () => {
-        createPost.inputVal();
-        createPost.readImage();
+        createPost.saveImageData();
     });
 
     let fileInput = document.getElementById('thumb');
     fileInput.addEventListener('change', function () {
         createPost.readFile(event.target.files);
     });
-
 
     $(document).on('click', '.deleteImg', (event) => {
         let modalWin = $(`#access`);
@@ -122,5 +111,4 @@ $(document).ready(function() {
             }
         });
     });
-
 });
