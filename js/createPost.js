@@ -18,19 +18,19 @@ $(document).ready(function() {
         },
 
         saveImageData : () => {
-            let postId = createPost.posts ? createPost.posts.length : '0';
+            let postId = createPost.posts ? (createPost.posts.length + 1) : '1';
             let images = createPost.imagesArray ? createPost.imagesArray : null;
             $.ajax({
                 url: '../imageWorker.php',
                 method: 'post',
                 data: {
+                    name          : '',
                     postId        : postId,
                     owner_id      : createPost.userId,
                     images        : images
                 },
                 success: function(id){
-                    console.log(JSON.parse(id)['1']);
-                    // createPost.inputVal(id);
+                   createPost.inputVal(id);
                 },
                 error: function(err){
                     console.error(err)
@@ -55,7 +55,7 @@ $(document).ready(function() {
             if(!createPost.posts) createPost.posts = [];
 
             createPost.posts.push({
-             id         : String(createPost.posts.length),
+             id         : String(createPost.posts.length +1),
              category   : category,
              title      : title,
              desk       : desc,
@@ -65,7 +65,7 @@ $(document).ready(function() {
             });
 
             localStorage.setItem('posts', JSON.stringify(createPost.posts));
-            // window.location.href = document.referrer;
+            window.location.href = document.referrer;
         },
 
         showImage : (reader,imgData,id) => {

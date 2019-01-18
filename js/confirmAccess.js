@@ -7,8 +7,9 @@ let accessConfirm = {
         let password = inputs.eq(1);
 
         $.each(this.users, (key,value) => {
-            // console.log(email.val() === value.email && password.val() === value.password && accessConfirm.users);
+            console.log(email.val() , value.email, password.val(), value.password, accessConfirm.users);
             if(email.val() === value.email && password.val() === value.password && accessConfirm.users) {
+
                 document.cookie = "id="+key;
                 window.location.href = 'index.html';
             }else if ((email.val() !== value.email) || (password.val() !== value.password || !accessConfirm.users)) {
