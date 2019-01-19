@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ef5384e-37ab-42d2-84a3-924019a06305" name="Default Changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/edit.html" afterPath="$PROJECT_DIR$/edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageWorker.php" afterPath="$PROJECT_DIR$/imageWorker.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images.json" afterPath="$PROJECT_DIR$/images.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/allPost.js" afterPath="$PROJECT_DIR$/js/allPost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/confirmAccess.js" afterPath="$PROJECT_DIR$/js/confirmAccess.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/createPost.js" afterPath="$PROJECT_DIR$/js/createPost.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/edit.js" afterPath="$PROJECT_DIR$/js/edit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/myPosts.js" afterPath="$PROJECT_DIR$/js/myPosts.js" />
@@ -23,57 +19,45 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="edit.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="113" column="57" lean-forward="false" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
+            <state relative-caret-position="588">
+              <caret line="112" column="10" lean-forward="true" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
               <folding>
-                <marker date="1547832624757" expanded="true" signature="2082:2124" ph="..." />
-                <marker date="1547832624757" expanded="true" signature="2082:2125" ph="..." />
-                <marker date="1547832624757" expanded="true" signature="2082:2302" ph="..." />
+                <marker date="1547904003020" expanded="true" signature="2082:2124" ph="..." />
+                <marker date="1547904003020" expanded="true" signature="2082:2125" ph="..." />
+                <marker date="1547904003020" expanded="true" signature="2082:2302" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/show.html">
+      <file leaf-file-name="myPosts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/myPosts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="198" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="198" />
+            <state relative-caret-position="221">
+              <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="198" lean-forward="false" selection-start-line="6" selection-start-column="198" selection-end-line="6" selection-end-column="198" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createPost.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/createPost.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
-              <folding>
-                <marker date="1547824392210" expanded="true" signature="2743:2964" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imageWorker.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="imageWorker.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imageWorker.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            <state relative-caret-position="573">
+              <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="images.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/images.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,7 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data</find>
       <find>data-</find>
       <find>data-a</find>
       <find>data-at</find>
@@ -112,6 +95,7 @@
       <find>&quot;2&quot;</find>
       <find>id</find>
       <find>time</find>
+      <find>windo</find>
       <find>console</find>
     </findStrings>
     <replaceStrings>
@@ -154,14 +138,14 @@
         <option value="$PROJECT_DIR$/createPost.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/images.json" />
-        <option value="$PROJECT_DIR$/js/myPosts.js" />
         <option value="$PROJECT_DIR$/js/confirmAccess.js" />
         <option value="$PROJECT_DIR$/js/allPost.js" />
-        <option value="$PROJECT_DIR$/imageWorker.php" />
-        <option value="$PROJECT_DIR$/js/createPost.js" />
         <option value="$PROJECT_DIR$/edit.html" />
+        <option value="$PROJECT_DIR$/images.json" />
+        <option value="$PROJECT_DIR$/js/createPost.js" />
         <option value="$PROJECT_DIR$/js/edit.js" />
+        <option value="$PROJECT_DIR$/js/myPosts.js" />
+        <option value="$PROJECT_DIR$/imageWorker.php" />
       </list>
     </option>
   </component>
@@ -197,21 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="js_traning">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -236,6 +205,21 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="js_traning">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -372,18 +356,19 @@
       <workItem from="1547625279924" duration="33223000" />
       <workItem from="1547719063426" duration="18777000" />
       <workItem from="1547739892928" duration="7000" />
-      <workItem from="1547802979454" duration="27542000" />
+      <workItem from="1547802979454" duration="27716000" />
+      <workItem from="1547884341524" duration="12635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300418000" />
+    <option name="totallyTimeSpent" value="313227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18573265" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18830334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -563,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/edit_delete.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -651,15 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="23" column="59" lean-forward="false" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -685,14 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/myPosts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106">
-          <caret line="5" column="64" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/allPost.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -701,49 +661,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imageWorker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/show.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="198" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="198" />
+          <caret line="5" column="198" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="198" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="-204">
           <caret line="6" column="198" lean-forward="false" selection-start-line="6" selection-start-column="198" selection-end-line="6" selection-end-column="198" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/edit_delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/createPost.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+        <state relative-caret-position="1139">
+          <caret line="67" column="10" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
           <folding>
-            <marker date="1547824392210" expanded="true" signature="2743:2964" ph="..." />
+            <marker date="1547903918204" expanded="true" signature="2726:2947" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="113" column="57" lean-forward="false" selection-start-line="113" selection-start-column="57" selection-end-line="113" selection-end-column="57" />
+        <state relative-caret-position="588">
+          <caret line="112" column="10" lean-forward="true" selection-start-line="112" selection-start-column="10" selection-end-line="112" selection-end-column="10" />
           <folding>
-            <marker date="1547832624757" expanded="true" signature="2082:2124" ph="..." />
-            <marker date="1547832624757" expanded="true" signature="2082:2125" ph="..." />
-            <marker date="1547832624757" expanded="true" signature="2082:2302" ph="..." />
+            <marker date="1547904003020" expanded="true" signature="2082:2124" ph="..." />
+            <marker date="1547904003020" expanded="true" signature="2082:2125" ph="..." />
+            <marker date="1547904003020" expanded="true" signature="2082:2302" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/myPosts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imageWorker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -72,7 +72,25 @@ $(document).ready(function() {
             let category  = fields.eq(0).val();
             let title     = fields.eq(1).val();
             let desc      = $('textarea').val();
-            let imgElem   = fields.eq(2);
+
+            $.ajax({
+                url : `../imageWorker.php`,
+                method :   `post`,
+                async : false,
+                data : {
+                    id       : edit.postId,
+                    images   : edit.imgArray,
+                    postId   : edit.postId,
+                    owner_id : edit.userId,
+                    edit     : `edit`,
+                },
+                success  : (data) => {
+                    // console.log(data);
+                },
+                error   : (err) => {
+                    console.log(err)
+                }
+            });
 
             $.each(edit.posts,(key,value) => {
                 if(value.postId === edit.postId) {
@@ -81,7 +99,7 @@ $(document).ready(function() {
                         category   : category,
                         title      : title,
                         desk       : desc,
-                        // imgPath  : 'images/300x200.png',
+                        imgId      : edit.postId,
                         owner_id   : edit.userId,
                         updated_at : time
                     });
@@ -90,7 +108,7 @@ $(document).ready(function() {
                 }
             });
 
-            this.deleteCookie();
+            edit.deleteCookie();
             window.location.href = `myPost.html`;
         },
 

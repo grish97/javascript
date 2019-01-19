@@ -5,7 +5,6 @@ $(document).ready(function() {
         userId    : (document.cookie.split(';')[0]).split('=')[1],
         fileArray : [],
         imagesArray: [],
-        filesLoad  : 0,
 
         readFile : (fileList) => {
             if(fileList.length !== 0) {
@@ -24,10 +23,10 @@ $(document).ready(function() {
                 url: '../imageWorker.php',
                 method: 'post',
                 data: {
-                    name          : '',
-                    postId        : postId,
                     owner_id      : createPost.userId,
-                    images        : images
+                    images        : images,
+                    postId        : postId,
+                    create        : `create`,
                 },
                 success: function(id){
                    createPost.inputVal(id);

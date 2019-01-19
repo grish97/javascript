@@ -58,26 +58,46 @@ $(document).ready(function () {
             });
         },
 
-        delete : function (event) {
+         delete : function (event) {
             let target = $(event.target);
             let card = target.closest('.item');
-            $(object.posts).each(function(key,post) {
-                if(this.postId === id) {
+            let cardId = card.attr('data-attribute');
+
+            // DELETE POST
+            $.each(object.posts, (key,post) => {
+                if(post['id'] === cardId) {
                     object.posts.splice(key,1);
-                    localStorage.setItem('posts', JSON.stringify(object.posts));
+                    // localStorage.setItem('posts', JSON.stringify(object.posts));
                     card.remove();
-                    return true;
                 }
-                $.each(object.comments,(index, comment) => {
-                    if (comment.postId === post.postId) {
-                        object.comments.splice(index,1);
-                        localStorage.setItem('comments', JSON.stringify(object.comments));
+                // DELETE COMMENT
+                // $.each(object.comments,(index, comment) => {
+                //     if (comment.postId === post.id) {
+                //         object.comments.splice(index,1);
+                //         localStorage.setItem('comments', JSON.stringify(object.comments));
+                //         console.log(comment);
+                //     }
+                // });
+                // DELETE IMAGE
+                $.ajax({
+                    url : `../imageWorker.php`,
+                    method : `post`,
+                    async  : false,
+                    data  : {
+                        id     : post.id,
+                        delete : `delete`,
+                    },
+                    success : (data) => {
+                        console.log(data);
+                    },
+                    error : (err) => {
+                        console.log(err);
                     }
                 });
             });
-            card.remove();
 
-        }
+
+        },
     };
 
     object.userPost();
