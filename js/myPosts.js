@@ -27,9 +27,10 @@ $(document).ready(function () {
                         $.ajax({
                             url    : '../imageWorker.php',
                             method : 'get',
-                            data: {id : post.id},
+                            data: {id : post.imgId},
                             success : (data) => {
                                 data = JSON.parse(data);
+                                console.log(data.images);
                                 let imgElem = `<img src="${data.images ? data.images[0] : 'images/300x200.png'}" alt="Photo" width="300" height="200">`;
                                 $(`.item[data-attribute='${post.id}']`).find(`.card-body`).prepend(imgElem);
                             },
@@ -84,7 +85,7 @@ $(document).ready(function () {
                     method : `post`,
                     async  : false,
                     data  : {
-                        id     : post.id,
+                        id     : post.imgId,
                         delete : `delete`,
                     },
                     success : (data) => {

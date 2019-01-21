@@ -5,13 +5,14 @@ $(document).ready(function() {
         userId   : (document.cookie.split(';')[0]).split('=')[1],
         postId   : (document.cookie.split(';')[1]).split('=')[1],
         imgArray : [],
+        imgId    : '',
 
         readFile : (fileList) => {
                 $.each(fileList, (key,value) => {
                     let reader = new FileReader();
                     reader.onload = () => {
                         edit.imgArray.push(reader.result);
-                        edit.showImg(reader.result,(edit.imgArray.length - 1));
+                        edit.showImg(reader.result,(edit.imgArray.length));
                     };
                     reader.readAsDataURL(value);
                 });
@@ -22,7 +23,7 @@ $(document).ready(function() {
                 url    : '../imageWorker.php',
                 method  : 'get',
                 async : false,
-                data : {id : edit.postId},
+                data : {id : edit.imgId},
                 success : (data) => {
                     data = JSON.parse(data);
                     for (let i = 0; i < (data.images.length); i++) {
@@ -38,6 +39,7 @@ $(document).ready(function() {
         getPost : function () {
             $.each(edit.posts, (key,value) => {
                 if(value.owner_id === edit.userId && value.id === edit.postId) {
+                    edit.imgId = value.imgId;
                     edit.inputVal(value);
                 }
             });
@@ -51,7 +53,7 @@ $(document).ready(function() {
             fields.eq(1).attr('value',data.title);
             $('textarea').text(data.desk);
             for (let i = 0; i < (edit.imgArray.length);i++) {
-                edit.showImg(edit.imgArray[i],i);
+                edit.showImg(edit.imgArray[i],i + 1);
             }
         },
 
@@ -72,13 +74,18 @@ $(document).ready(function() {
             let category  = fields.eq(0).val();
             let title     = fields.eq(1).val();
             let desc      = $('textarea').val();
-
+            // console.log(
+            //     edit.imgId,
+            //     edit.imgArray,
+            //     edit.postId,
+            //     edit.userId,
+            //     );
             $.ajax({
                 url : `../imageWorker.php`,
                 method :   `post`,
                 async : false,
                 data : {
-                    id       : edit.postId,
+                    id       : edit.imgId,
                     images   : edit.imgArray,
                     postId   : edit.postId,
                     owner_id : edit.userId,
@@ -99,7 +106,7 @@ $(document).ready(function() {
                         category   : category,
                         title      : title,
                         desk       : desc,
-                        imgId      : edit.postId,
+                        imgId      : edit.imgId,
                         owner_id   : edit.userId,
                         updated_at : time
                     });
@@ -109,7 +116,7 @@ $(document).ready(function() {
             });
 
             edit.deleteCookie();
-            window.location.href = `myPost.html`;
+            // window.location.href = `myPost.html`;
         },
 
         deleteCookie   :  () => {
@@ -120,6 +127,7 @@ $(document).ready(function() {
 
     edit.getPost();
     $(document).on( 'click','.access',() =>  {
+        console.log(edit.imgArray);
         edit.update();
     });
 
@@ -131,8 +139,6 @@ $(document).ready(function() {
     $(document).on('click','.deleteImg', (event) => {
        let imgBlock = $(event.target).closest(`._image`);
        let imgBlockId = $(event.target).closest(`._image`).attr(`data-id`);
-       console.log(imgBlockId,imgBlock);
-       edit.imgArray.splice(imgBlockId,1);
        imgBlock.remove();
     });
 
