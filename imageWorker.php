@@ -36,10 +36,12 @@ function getImg($id) {
 function editImg($id) {
     $file = file_get_contents('images.json');
     $file_data = json_decode($file,true);
-    $post["$id"] = [
+    $post = [
+        "$id" => [
             'postId'    => $_POST['postId'],
             'owner_id'  => $_POST['owner_id'],
             'images'    => $_POST['images']
+        ],
     ];
     array_splice($file_data,($id),1,$post);
     file_put_contents('images.json',json_encode($file_data));
@@ -49,9 +51,9 @@ function editImg($id) {
 function deleteImg($id) {
     $file = file_get_contents('images.json');
     $file_data = json_decode($file, true);
-    array_splice($file_data,$id,1);
+    unset($file_data[$id]);
     file_put_contents('images.json',json_encode($file_data));
-    var_dump($file_data[$id]);
+    var_dump($file_data);
 }
 
 

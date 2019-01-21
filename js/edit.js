@@ -12,7 +12,7 @@ $(document).ready(function() {
                     let reader = new FileReader();
                     reader.onload = () => {
                         edit.imgArray.push(reader.result);
-                        edit.showImg(reader.result,(edit.imgArray.length));
+                        edit.showImg(reader.result,(edit.imgArray.length - 1));
                     };
                     reader.readAsDataURL(value);
                 });
@@ -53,11 +53,11 @@ $(document).ready(function() {
             fields.eq(1).attr('value',data.title);
             $('textarea').text(data.desk);
             for (let i = 0; i < (edit.imgArray.length);i++) {
-                edit.showImg(edit.imgArray[i],i + 1);
+                edit.showImg(edit.imgArray[i],i);
             }
         },
 
-        showImg : (src,id) => {
+        showImg : (src, id) => {
             let imgBlock = `<div class="_image d-inline-block" data-id='${id}'>
                                 <img src='${src}' class="mt-3 mr-2" alt="Photo" width="100px" height="100px">
                                 <i class="far fa-trash-alt deleteImg"></i>
@@ -74,19 +74,14 @@ $(document).ready(function() {
             let category  = fields.eq(0).val();
             let title     = fields.eq(1).val();
             let desc      = $('textarea').val();
-            // console.log(
-            //     edit.imgId,
-            //     edit.imgArray,
-            //     edit.postId,
-            //     edit.userId,
-            //     );
+
             $.ajax({
                 url : `../imageWorker.php`,
                 method :   `post`,
                 async : false,
                 data : {
                     id       : edit.imgId,
-                    images   : edit.imgArray,
+                    images   : edit.imgArray.filter((el)=> el) ? edit.imgArray.filter((el)=> el) : 'images/300x200.png',
                     postId   : edit.postId,
                     owner_id : edit.userId,
                     edit     : `edit`,
@@ -116,7 +111,7 @@ $(document).ready(function() {
             });
 
             edit.deleteCookie();
-            // window.location.href = `myPost.html`;
+            window.location.href = `myPost.html`;
         },
 
         deleteCookie   :  () => {
@@ -139,6 +134,7 @@ $(document).ready(function() {
     $(document).on('click','.deleteImg', (event) => {
        let imgBlock = $(event.target).closest(`._image`);
        let imgBlockId = $(event.target).closest(`._image`).attr(`data-id`);
+       delete edit.imgArray[imgBlockId];
        imgBlock.remove();
     });
 

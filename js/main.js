@@ -3,7 +3,7 @@ let userObject = {
     userId  : (document.cookie.split(';')[0]).split('=')[1],
 
     getUser : function () {
-        if(this.userId) {
+        if(this.userId && this.users) {
             let user = this.users[this.userId];
             this.profile(user)
         }

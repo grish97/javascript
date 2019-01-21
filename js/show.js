@@ -4,27 +4,55 @@ let show = {
     comments : JSON.parse(localStorage.getItem('comments')),
     userId   : (document.cookie.split(';')[0]).split('=')[1],
     postId   : (document.cookie.split(';')[1]).split('=')[1],
+    image    : null,
 
-    viewPost : function() {
-        if (this.posts) {
-            $.each(this.posts, function () {
-                if (show.postId === this.postId) {
-                    let divCard = '<div class="item text-center" data-attribute="' + this.postId + '">' +
-                        '   <div class="">' +
-                        '       <h5 class="show mt-4 mb-5">' + this.title + '</h5>' +
-                        '       <img src="' + this.imgPath + '" class="" alt="photo" width="70%"  height="300px">' +
-                        '       <div class="card-body"> ' +
-                        '           <p class="card-text">' + this.desk + '</p>' +
-                        '           <p class="card-text"><span class="small text-muted"></p>' +
-                        '           <a class="btn edit mr-3"><i class="far fa-edit"></i></a> <a class="btn delete" role="button"><i class="fas fa-trash-alt"></i></a>' +
-                        '       </div>' +
-                        '   </div>' +
-                        '</div>';
-                    $('.cardBlock').append(divCard);
+    viewPost : () => {
+        let imgId = show.posts[show.postId - 1]['imgId'];
+        $.ajax({
+            url : `imageWorker.php`,
+            method : `get`,
+            async : false,
+            data : {id : imgId},
+            success : (data) => {
+                data = JSON.parse(data) ? JSON.parse(data).images : `images/300x200.png`;
+                show.image = data;
+            },
+            error : (err) => {
+                console.log(err);
+            },
+        });
+
+        $.each(show.posts, (key,post) => {
+            if(show.postId === post.id) {
+                let divCard =
+                    `<div class="item text-center" data-attribute="${post.id}"> 
+                       <div class="">
+                             <div class="card-body">
+                                  <h5 class="mt-4 mb-5 title">${post.title}</h5>
+                                 <p class="card-text">${post.desk}</p>
+                                 <p class="card-text"><span class="small text-muted"></span></p>
+                                 <a class="btn edit mr-3"><i class="far fa-edit"></i></a> <a class="btn delete" role="button"><i class="fas fa-trash-alt"></i></a>
+                             </div>
+                       </div>
+                    </div>`;
+                $('.cardBlock').append(divCard);
+
+                for (let i = 0; i < (show.image.length);i++) {
+                    let imgElem =
+                        `<div class="imageBlock d-inline-block mt-2 mr-3 mb-3" data-id="${i}">
+                            <img src="${show.image[i]}" alt="Post Photo" width="180" height="150">
+                         </div>`;
+                    $(`.card-body`).prepend(imgElem);
                 }
-            });
-            this.viewComment();
-        }
+            }
+        });
+
+        $(`.imageBlock[data-id='${show.image.length - 1}']`).addClass(`active`).removeClass(`d-inline-block`);
+        $(`.imageBlock`).on(`click`, (event) => {
+            // $(event.target).toggleClass(`active`)
+            // $(event.target).parent(`.imageBlock`).toggleClass(`active`);
+        });
+        show.viewComment();
     },
 
     viewComment : function() {
