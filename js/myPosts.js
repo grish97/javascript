@@ -4,13 +4,13 @@ $(document).ready(function () {
         posts : JSON.parse(localStorage.getItem('posts')),
         comments : JSON.parse(localStorage.getItem('comments')),
         userId  : (document.cookie.split(';')[0]).split('=')[1],
+        post    : false,
 
 
         userPost : function () {
-            if(!this.posts || this.posts.length === 0) $('.card-group').append('<p class="card-text text-danger">No Post</p>');
-
             $.each(this.posts, (key,post) => {
                 if(object.userId === post.owner_id) {
+                    object.post = true;
                     let images;
                         $.ajax({
                             url    : '../imageWorker.php',
@@ -29,6 +29,9 @@ $(document).ready(function () {
                 }
             });
 
+            if(!this.post || !object.post) {
+                $('.card-group').append('<p class="card-text text-danger text-center mt -5">No Post</p>');
+            }
         },
 
         generateCard : (post,key,img) => {
@@ -51,40 +54,39 @@ $(document).ready(function () {
             let card = target.closest('.item');
             let cardId = card.attr('data-attribute');
 
-            // DELETE POST
+
             $.each(object.posts, (key,post) => {
                 if(post['id'] === cardId) {
+                    // DELETE POST
                     object.posts.splice(key,1);
                     localStorage.setItem('posts', JSON.stringify(object.posts));
                     card.remove();
+                    // DELETE COMMENT
+                    $.each(object.comments,(index, comment) => {
+                        if (comment.postId === post.id) {
+                            object.comments.splice(index,1);
+                            localStorage.setItem('comments', JSON.stringify(object.comments));
+                            console.log(comment);
+                        }
+                    });
+                    // DELETE IMAGE
+                    $.ajax({
+                        url: `../imageWorker.php`,
+                        method: `post`,
+                        async: false,
+                        data: {
+                            id: (post.imgId),
+                            delete: `delete`,
+                        },
+                        success: (data) => {
+                            console.log(data);
+                        },
+                        error: (err) => {
+                            console.log(err);
+                        }
+                    });
                 }
-                // DELETE COMMENT
-                $.each(object.comments,(index, comment) => {
-                    if (comment.postId === post.id) {
-                        object.comments.splice(index,1);
-                        localStorage.setItem('comments', JSON.stringify(object.comments));
-                        console.log(comment);
-                    }
-                });
-                // DELETE IMAGE
-                $.ajax({
-                    url : `../imageWorker.php`,
-                    method : `post`,
-                    async  : false,
-                    data  : {
-                        id     : (post.imgId),
-                        delete : `delete`,
-                    },
-                    success : (data) => {
-                        console.log(data);
-                    },
-                    error : (err) => {
-                        console.log(err);
-                    }
-                });
             });
-
-
         },
     };
 

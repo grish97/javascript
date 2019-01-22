@@ -79,5 +79,8 @@ $('#submitButton').click(function () {
 });
 
 $('input').keyup((event) => {
-   if(event.which === 13 && registerValidation()) createUser();
+   if(event.which === 13) {
+       $(`input`).removeClass(`is-invalid`);
+        createUser();
+   }
 });

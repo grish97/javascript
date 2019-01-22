@@ -17,10 +17,10 @@ let userObject = {
             $('#content').removeClass('d-none');
             $('.user_name').text(data['name']);
             $('.logout').click(function () {
-                document.cookie = "id='"+ userObject.userId +"'; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = `id=${userObject.userId};expires=Thu, 01 Jan 1970 00:00:00 GMT`;
                 window.location.href = 'login.html';
             });
         }
-    }
+    },
 };
 userObject.getUser();

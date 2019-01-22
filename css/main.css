@@ -51,14 +51,14 @@ opacity:1;
 }
 /*CARD END*/
 /*SHOW POST*/
-.imgBlock {
-position:relative;
-}
+/*.imgBlock {*/
+/*position:relative;*/
+/*}*/
 
 .title {
 width:420px;
 position: absolute;
-top: 40%;
+top: 30%;
 left:35%;
 font-size:41px;
 color:#fff;

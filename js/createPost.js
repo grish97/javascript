@@ -64,7 +64,7 @@ $(document).ready(function() {
             });
 
             localStorage.setItem('posts', JSON.stringify(createPost.posts));
-            window.location.href = document.referrer;
+            window.location.href = `myPost.html`;
         },
 
         showImage : (reader,imgData,id) => {

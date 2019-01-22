@@ -53,7 +53,7 @@ function deleteImg($id) {
     $file_data = json_decode($file, true);
     unset($file_data[$id]);
     file_put_contents('images.json',json_encode($file_data));
-    var_dump($file_data);
+    var_dump(count($file_data));
 }
 
 

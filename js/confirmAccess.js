@@ -1,23 +1,30 @@
 let accessConfirm = {
     users  : JSON.parse(localStorage.getItem('users')),
+    confirmed : false,
 
     getAccount : function () {
         let inputs = $('input');
         let email    = inputs.eq(0);
         let password = inputs.eq(1);
 
-        $.each(this.users, (key,value) => {
-            console.log(email.val() , value.email, password.val(), value.password, accessConfirm.users);
-            if(email.val() === value.email && password.val() === value.password && accessConfirm.users) {
+        if(accessConfirm.users) {
+            $.each(accessConfirm.users, (key,value) => {
+                if((value.email === email.val()) && (value.password === password.val())) {
+                    accessConfirm.confirmed = true;
+                    document.cookie = "id="+key;
+                    window.location.href = 'index.html';
+                }
+            });
 
-                document.cookie = "id="+key;
-                window.location.href = 'index.html';
-            }else if ((email.val() !== value.email) || (password.val() !== value.password || !accessConfirm.users)) {
+            if(!accessConfirm.confirmed) {
                 $('.wrong').addClass('d-block');
                 email.addClass('is-invalid');
                 password.addClass('is-invalid');
             }
-        });
+
+        }else {
+            window.location.replace(`register.html`);
+        }
     }
 };
 
@@ -26,4 +33,3 @@ $(`input`).keyup((event) => {
 });
 
 $('.btn').click(() => accessConfirm.getAccount());
-

@@ -138,4 +138,8 @@ $(document).ready(function() {
        imgBlock.remove();
     });
 
+    window.addEventListener('beforeunload', function () {
+        document.cookie = `postId=${edit.postId};expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    });
+
 });
